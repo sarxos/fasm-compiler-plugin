@@ -31,3 +31,8 @@ Put your ASM sources in ```src/main/asm``` and include this plugin in you POM:
 
 Above example will compile all ```*.asm``` files to corresponding ```*.exe``` ones. You
 can change ```<extension>``` to whatever you want (bin, dll, etc). 
+
+Available goals:
+
+* fasm-compiler:compile
+* fasm-compiler:help  
