@@ -5,7 +5,7 @@ Maven plugin to compile [flat assembler](http://flatassembler.net/) source files
 
 ## Usage
 
-Put your ASM sources in ```src/main/asm``` and include this in you POM:
+Put your ASM sources in ```src/main/asm``` and include this plugin in you POM:
 
 ```
 <build>
@@ -29,4 +29,5 @@ Put your ASM sources in ```src/main/asm``` and include this in you POM:
 </build>
 ```
 
-Above example will compile all ```*.asm``` files to corresponding ```*.exe``` ones. 
+Above example will compile all ```*.asm``` files to corresponding ```*.exe``` ones. You
+can change ```<extension>``` to whatever you want (bin, dll, etc). 
