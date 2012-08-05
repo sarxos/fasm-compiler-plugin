@@ -191,6 +191,14 @@ public class FasmCompileMojo extends AbstractMojo {
 			command.add(p.input.getAbsolutePath());
 			command.add(p.output.getAbsolutePath());
 
+			File parent = new File(p.output.getParent());
+			if (!parent.exists()) {
+				boolean created = parent.mkdirs();
+				if (!created) {
+					throw new MojoExecutionException("Cannot create directory " + parent);
+				}
+			}
+
 			if (getLog().isDebugEnabled()) {
 				String dbgcmd = "";
 				for (String cmd : command) {
@@ -208,23 +216,21 @@ public class FasmCompileMojo extends AbstractMojo {
 				throw new MojoExecutionException("Cannot start compilation process", e);
 			}
 
-			if (getLog().isDebugEnabled()) {
-				InputStream is = process.getInputStream();
-				BufferedReader br = new BufferedReader(new InputStreamReader(is));
-				try {
-					String line = null;
-					while ((line = br.readLine()) != null) {
-						getLog().debug(line);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} finally {
-					if (br != null) {
-						try {
-							br.close();
-						} catch (IOException e) {
-							throw new MojoExecutionException("Cannot close reader", e);
-						}
+			InputStream is = process.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			try {
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					getLog().info(line);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (br != null) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						throw new MojoExecutionException("Cannot close reader", e);
 					}
 				}
 			}
@@ -237,7 +243,9 @@ public class FasmCompileMojo extends AbstractMojo {
 			}
 
 			if (exit != 0) {
-				getLog().error("Cannot compile file " + p.input);
+				String msg = "Process returned " + exit + ". Cannot compile file " + p.input;
+				getLog().error(msg);
+				throw new MojoExecutionException(msg);
 			}
 		}
 	}
