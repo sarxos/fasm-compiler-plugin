@@ -1,19 +1,22 @@
 fasm-compiler-plugin
 ====================
 
-Maven plugin to compile [flat assembler](http://flatassembler.net/) source files (*.asm)
+Maven plugin to compile [flat assembler](http://flatassembler.net) source files (*.asm)
 
 ## Usage
 
-Put your ASM sources in ```src/main/asm``` and include this plugin in you POM:
+1. Download [FASM](http://flatassembler.net) and unzip it somewhere,
+2. Set ```FASM_HOME``` environment variable pointing to the FASM binaries,
+3. Put your ASM sources in ```src/main/asm```,
+4. Use belows plugin configuration in your POM
 
-```
+```xml
 <build>
 	<plugins>
 		<plugin>
 			<groupId>com.github.sarxos</groupId>
 			<artifactId>fasm-compiler-plugin</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.1</version>
 			<executions>
 				<execution>
 					<goals>
@@ -36,3 +39,11 @@ Available goals:
 
 * fasm-compiler:compile
 * fasm-compiler:help  
+
+Instead of setting ```FASM_HOME``` you can also set ```<fasm.home>``` property in your POM:
+
+```xml
+<properties>
+	<fasm.home>C:\urs\fasm</fasm.home>
+</properties>
+```
