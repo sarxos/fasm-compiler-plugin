@@ -5,7 +5,7 @@ Maven plugin to compile [flat assembler](http://flatassembler.net) (asm) files
 
 ## Usage
 
-1. Download [flat assembler](http://flatassembler.net) and unzip it somewhere on your disk,
+1. Download [flat assembler](http://flatassembler.net/download.php) and unzip it somewhere on your disk,
 2. Set ```FASM_HOME``` environment variable pointing to that location,
 3. Put your ASM sources in ```src/main/asm```,
 4. Use below's plugin configuration in your POM:
