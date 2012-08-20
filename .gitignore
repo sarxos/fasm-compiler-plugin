@@ -1,2 +1,4 @@
 target/
 .settings/
+example/target/
+example/.settings/
