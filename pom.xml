@@ -30,7 +30,7 @@
 	<licenses>
 		<license>
 			<name>MIT License</name>
-			<url>https://raw.github.com/sarxos/fasm-compiler-plugin/master/LICENSE.txt</url>
+			<url>https://raw.github.com/sarxos/${project.artifactId}/master/LICENSE.txt</url>
 			<distribution>repo,manual</distribution>
 		</license>
 	</licenses>
@@ -43,14 +43,14 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:git:git@github.com:sarxos/fasm-compiler-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:sarxos/fasm-compiler-plugin.git</developerConnection>
-		<url>git@github.com:sarxos/fasm-compiler-plugin.git</url>
+		<connection>scm:git:git@github.com:sarxos/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@github.com:sarxos/${project.artifactId}.git</developerConnection>
+		<url>git@github.com:sarxos/${project.artifactId}.git</url>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub Issues Manager</system>
-		<url>https://github.com/sarxos/fasm-compiler-plugin/issues</url>
+		<url>https://github.com/sarxos/${project.artifactId}/issues</url>
 	</issueManagement>
 
 	<developers>
