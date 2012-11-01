@@ -1,14 +1,27 @@
 fasm-compiler-plugin
 ====================
 
-Maven plugin to compile [flat assembler](http://flatassembler.net) (asm) files
+Maven plugin to compile [flat assembler (FASM)](http://flatassembler.net) asm files. It can use 
+either FASM binaries from your PC or embedded ones from plugin JAR. Plugin should work on all
+environments (like Linux, DOS, Windows), but was tested only on Windows. 
+
+For example project please see ```example``` directory. 
+
+### Use Local FASM Binaries
+
+[Download](http://flatassembler.net/download.php) zipped FASM binaries and extract somewhere in
+your local environment. Set ```FASM_HOME``` environment variable to point to the directory where 
+FASM executable is located. Plugin will discover this variable automatically and use FASM from 
+this location. 
+
+### Use Embedded FASM Binaries
+
+Do nothing, just use plugin in your POM.
 
 ## Usage
 
-1. Download [flat assembler](http://flatassembler.net/download.php) and unzip it somewhere on your disk,
-2. Set ```FASM_HOME``` environment variable pointing to that location,
-3. Put your ASM sources in ```src/main/asm```,
-4. Use below's plugin configuration in your POM:
+1. Put your ```ASM``` files in ```src/main/asm```,
+2. Use this configuration in your POM:
 
 ```xml
 <build>
@@ -16,7 +29,7 @@ Maven plugin to compile [flat assembler](http://flatassembler.net) (asm) files
 		<plugin>
 			<groupId>com.github.sarxos</groupId>
 			<artifactId>fasm-compiler-plugin</artifactId>
-			<version>0.1</version>
+			<version>0.2</version>
 			<executions>
 				<execution>
 					<goals>
@@ -33,23 +46,40 @@ Maven plugin to compile [flat assembler](http://flatassembler.net) (asm) files
 ```
 
 Above example will compile all ```asm``` files to corresponding ```exe``` ones. You
-can change ```<extension>``` to whatever you want (so, dll, bin, etc).
+can change ```<extension>``` to whatever you want (e.g. ```so```, ```dll```, ```bin```, etc).
 
-You can find compiled binaries in ```target/fasmbin``` directory.
+Default location for compiled binaries is ```target/fasmbin```.
 
 Available goals:
 
 * fasm-compiler:compile
 * fasm-compiler:help  
 
-Instead of setting ```FASM_HOME``` you can also set ```<fasm.home>``` property in your POM:
+Instead of setting ```FASM_HOME``` you can also set ```<fasmHome>``` option in plugin configuration, e.g.:
+
 
 ```xml
-<properties>
-	<fasm.home>C:\urs\fasm</fasm.home>
-</properties>
+<build>
+	<plugins>
+		<plugin>
+			<groupId>com.github.sarxos</groupId>
+			<artifactId>fasm-compiler-plugin</artifactId>
+			<version>0.2</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>compile</goal>
+					</goals>
+				</execution>
+			</executions>
+			<configuration>
+				<fasmHome>C:\urs\fasm-1.70.03</fasmHome>
+				<extension>exe</extension>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 ```
-
 
 ## License
 
