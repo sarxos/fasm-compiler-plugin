@@ -5,7 +5,9 @@ Maven plugin to compile [flat assembler (FASM)](http://flatassembler.net) asm fi
 either FASM binaries from your PC or embedded ones from plugin JAR. Plugin should work on all
 environments (like Linux, DOS, Windows), but was tested only on Windows. 
 
-For example project please see ```example``` directory. 
+For example project please see ```example``` directory.
+
+Plugin details can be found [here](fasm-compiler-plugin.sarxos.pl). 
 
 ### Use Local FASM Binaries
 
